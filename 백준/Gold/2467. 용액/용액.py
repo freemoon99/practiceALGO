@@ -1,10 +1,8 @@
 N = int(input())
 li = list(map(int, input().split()))
-i, j = 0, 0
+ans = int(2e9)
 left = 0
 right = N-1
-
-ans = int(2e9)
 
 while left < right:
   plus = li[left] + li[right]
@@ -14,9 +12,9 @@ while left < right:
     j = li[right]
     ans = abs(plus)
     
-  if plus <= 0:
-    left += 1  
-  else:
+  if plus > 0:
     right -= 1
+  else:
+    left += 1
     
 print(i, j)
