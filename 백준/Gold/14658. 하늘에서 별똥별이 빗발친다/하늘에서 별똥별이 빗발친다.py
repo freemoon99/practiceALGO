@@ -16,5 +16,5 @@ for i in range(K):
             if star[i][0] <= star[k][0] and star[k][0] <= star[i][0]+L and star[j][1] <= star[k][1] and star[k][1] <= star[j][1]+L:
                 cnt += 1
         res = max(res, cnt)
-
-print(K-res)
+ans = K-res
+print(ans)
