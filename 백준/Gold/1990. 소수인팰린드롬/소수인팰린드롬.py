@@ -11,13 +11,9 @@ def is_prime_num(n):
 
 if b > 10000000: b = 10000000
 
-candidate = []
 for num in range(a, b + 1):
     if str(num) == str(num)[::-1]:
-        candidate.append(num)
+        if is_prime_num(num):
+            print(num)
 
-for n in candidate:
-    if is_prime_num(n):
-        print(n)
-        
 print(-1)
