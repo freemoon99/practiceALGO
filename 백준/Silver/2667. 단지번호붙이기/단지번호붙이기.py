@@ -1,32 +1,32 @@
 n = int(input())
-graph = [list(map(int, input().rstrip())) for _ in range(n)]
-visited = [[0]*n for _ in range(n)]
-dr = [0, 1, 0, -1]
-dc = [1, 0, -1, 0]
+grid = [list(map(int, input())) for _ in range(n)]
+visited = [[0] * n for _ in range(n)]
+dirs = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+complex = 0
+counts = []
 
-ans1 = 0
-ans2 = []
+def dfs(r, c):
+    cnt = 1
+    visited[r][c] = 1
+    grid[r][c] = complex
 
-def dfs(row, col):
-    visited[row][col] = 1
-    cnt = 1 # 현재 단지의 집 수를 세기 위함
+    for dr, dc in dirs:
+        nr, nc = r + dr, c + dc
+        if 0 <= nr < n and 0 <= nc < n:
+            if visited[nr][nc] == 0:
+                if grid[nr][nc] == 1:
+                    cnt += dfs(nr, nc)
 
-    for i in range(4):
-        nr = row + dr[i]
-        nc = col + dc[i]
+    return cnt
 
-        if 0<=nr<n and 0<=nc<n and visited[nr][nc] == 0:
-            if graph[nr][nc] == 1:
-                cnt += dfs(nr, nc)
-
-    return cnt # 현재 단지의 집 수 반환
 
 for i in range(n):
     for j in range(n):
-        if visited[i][j] == 0 and graph[i][j] == 1:
-            ans1 += 1 # 단지 수를 체크하기 위함
-            ans2.append(dfs(i, j))
-print(ans1)
-ans2.sort()
-for i in ans2:
-    print(i)
+        if grid[i][j] == 1 and visited[i][j] == 0:
+            complex += 1
+            counts.append(dfs(i, j))
+
+print(complex)
+counts.sort()
+for num in counts:
+    print(num)
