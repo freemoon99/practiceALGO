@@ -1,4 +1,6 @@
-def solution(nums):
+from typing import List
+
+def solution(nums:List[int]) -> int:
     a = len(nums)//2
     b = len(set(nums))
     
