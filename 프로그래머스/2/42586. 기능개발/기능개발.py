@@ -7,7 +7,6 @@ def solution(progresses, speeds):
         days.append(math.ceil((100-progresses[i])/speeds[i]))
     
     # 해당 기능 이전에 완성된 것(앞에 숫자가 더 큰지)이 있는지 확인
-    print(days)
     
     front = 0
     for back in range(len(speeds)):
