@@ -7,7 +7,6 @@ def solution(n, lost, reserve):
     answer = n-len(lost)
     
     lost.sort()
-    
     for j in lost:
         if j-1 in reserve:
             reserve.remove(j-1)
