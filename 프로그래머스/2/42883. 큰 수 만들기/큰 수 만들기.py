@@ -13,7 +13,6 @@ def solution(number, k):
         temp.append(num)
     
     while len(temp) > len(number)-k:
-        print(1)
         temp.pop()
     
     for i in temp:
